@@ -9,6 +9,7 @@ ctx.strokeStyle = "#2c2c2c";
 ctx.lineWidth = 2.5;
 
 let painting = false;
+
 function stopPainting() {
   painting = false;
 }
@@ -17,14 +18,18 @@ function startPainting() {
   painting = true;
 }
 
-//캔버스위에 마우스 인지
+//캔버스 위 마우스 인지
 function onMouseMove(event) {
   const X = event.offsetX;
   const Y = event.offsetY;
+
   if (!painting) {
+    console.log("creating Path in", X, Y);
     ctx.beginPath();
     ctx.moveTo(X, Y);
   } else {
+    console.log("creating line in", X, Y);
+
     ctx.lineTo(X, Y);
     ctx.stroke();
   }
