@@ -1,9 +1,10 @@
 const canvas = document.querySelector("#jsCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 700;
-canvas.height = 700;
+canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
+canvas.height = document.getElementsByClassName("canvas")[0].offsetHeight;
 
+//색상이나 스타일을 설정
 ctx.strokeStyle = "#2c2c2c";
 ctx.lineWidth = 2.5;
 
@@ -29,8 +30,6 @@ function onMouseMove(event) {
   }
 }
 
-//캔버스를 클릭했을 때 painting을 시작해야 함.
-//필요없는 부분,,,?
 function onMouseDown(event) {
   painting = true;
 }
