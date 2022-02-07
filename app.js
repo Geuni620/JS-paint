@@ -61,7 +61,7 @@ if (canvas) {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("click", handleCanvasClick);
+  canvas.addEventListener("mousedown", handleCanvasClick);
   canvas.addEventListener("contextmenu", handleCM);
 }
 
