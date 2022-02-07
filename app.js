@@ -4,11 +4,17 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 
-canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
-canvas.height = document.getElementsByClassName("canvas")[0].offsetHeight;
+const INITIAL_CLOLR = "#2c2c2c";
+
+const CANVAS_WIDTH = document.getElementsByClassName("canvas")[0].offsetWidth;
+const CANVAS_HEIGTH = document.getElementsByClassName("canvas")[0].offsetHeight;
+
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGTH;
 
 //색상이나 스타일을 설정
-ctx.strokeStyle = "#2c2c2c";
+ctx.strokeStyle = INITIAL_CLOLR;
+ctx.fillStyle = INITIAL_CLOLR;
 ctx.lineWidth = 2.5;
 
 let painting = false;
@@ -36,16 +42,24 @@ function onMouseMove(event) {
   }
 }
 
+function handleCanvasClick() {
+  if (filling) {
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGTH);
+  }
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
+  canvas.addEventListener("click", handleCanvasClick);
 }
 
 function handleColorClick(event) {
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
+  ctx.fillStyle = color;
 }
 
 Array.from(colors).forEach((color) =>
